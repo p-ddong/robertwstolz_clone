@@ -1,0 +1,102 @@
+.contact_form {
+  height: 340px;
+  width: 100%;
+  background-color: #98988c;
+  display: flex;
+  align-items: center;
+
+  img {
+    height: 100%;
+    width: 300px;
+    object-fit: cover;
+  }
+
+  .form {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    .title {
+        width: 90%;
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
+      align-items: center;
+
+      color: rgb(55, 63, 71);
+      gap: 10px;
+      text-align: center;
+
+      h1 {
+        text-transform: uppercase;
+        font-size: 30px;
+        line-height: 45px;
+        font-weight: 700;
+      }
+      p {
+        font-size: 18px;
+        line-height: 22px;
+      }
+    }
+    form {
+      width: 90%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 10px;
+      margin-top: 15px;
+      input {
+        border-radius: 4px;
+        padding: 0px 0px 0px 16px;
+        height: 50px;
+        text-align: left;
+        color: rgb(23, 31, 21);
+        font-size: 18px;
+        font-weight: 400;
+        letter-spacing: 0px;
+        background-color: rgb(255, 255, 255);
+        border: 1px solid rgb(96, 106, 114);
+
+        width: 100%;
+      }
+      button {
+        background: rgb(255, 255, 255);
+        border-radius: 6px;
+        border-style: solid;
+        border-color: rgb(92, 45, 227);
+        border-width: 1px;
+        color: rgb(92, 45, 227);
+        font-size: 20px;
+        font-weight: 700;
+        cursor: pointer;
+        pointer-events: auto;
+        height: 52px;
+        width: 100%;
+        &:hover {
+          background-color: #303b43;
+          color: rgba(255, 255, 255, 1);
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 725px) {
+  .contact_form {
+    height: 327.705px;
+
+  }
+}
+@media screen and (max-width: 630px) {
+    .contact_form {
+      height: 30%;
+      img {
+        height: 100%;
+        width: 280px;
+        object-fit: contain;
+      }
+    }
+  }
+  

@@ -1,0 +1,220 @@
+.header {
+  .top_menu_1,
+  .top_menu_2 {
+    .social {
+      color: white;
+      background-color: black;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      height: 40px;
+      font-size: 18px;
+
+      padding: 0px 10px;
+      .social_link {
+        display: flex;
+        gap: 10px;
+      }
+      .user_use {
+        display: flex;
+        gap: 30px;
+        .login,
+        .cart {
+          display: flex;
+          gap: 5px;
+          .txt {
+            font-size: 12px;
+          }
+        }
+        .cart {
+          padding-right: 15px;
+        }
+      }
+    }
+    .menu {
+
+      padding: 10px 20px;
+      display: flex;
+      align-items: center;
+      font-size: 14px;
+      font-weight: 400;
+
+      letter-spacing: 1px;
+      text-transform: uppercase;
+
+      .left,
+      .right {
+        max-width: 500px;
+        width: auto;
+        flex-wrap: wrap;
+        line-height: 50px;
+
+        display: flex;
+        align-items: center;
+        gap: 18px;
+
+        p {
+          cursor: pointer;
+          &:hover {
+            font-weight: 600;
+
+            border-bottom: 1px solid black;
+          }
+        }
+      }
+
+      .logo {
+        margin: auto auto;
+        width: 165px;
+        height: 53px;
+      }
+
+      .right {
+        width: 270px;
+        justify-content: end;
+      }
+      .search {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        text-transform: capitalize;
+        letter-spacing: 0px;
+        font-size: 25px;
+        width: 180px;
+        margin-left: 15px;
+        height: 42px;
+        padding: 10px;
+        border: 1px solid black;
+        
+        &:hover {
+          p {
+            font-weight: 400;
+            border: none;
+          }
+        }
+        .search-txt {
+          font-size: 13px;
+          color: gray;
+        }
+      }
+    }
+  }
+  .top_menu_2 {
+    .menu {
+      position: fixed;
+      top: 0px;
+      left: 0px;
+      right: 0px;
+      z-index: 99;
+
+      background-color: rgba(255, 255, 255, 0.9);
+      padding: 0px 0px;
+      padding-left: 20px;
+      .logo{
+        margin-top: 10px;
+        margin-bottom: 10px;
+      }
+      .cart{
+        padding: 0px;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 5px;
+        height: 100%;
+        width: 70px;
+        height: 73px;
+        background-color: black;
+        color: white;
+      }
+
+      .search{
+        padding: 0px;
+        border: none;
+        width: 30px;
+      }
+    }
+  }
+  .top_menu_2.hidden {
+    display: none;
+  }
+  .top_menu_3 {
+    display: none;
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    .menu {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-top: 5px;
+      padding-bottom: 5px;
+      background-color: rgba(255, 255, 255, 0.9);
+      .left{
+        gap: 5px;
+        align-items: center;
+        display: flex;
+        font-size: 12px;
+        .burger{
+          font-size: 30px;
+        }
+      }
+      .logo {
+        width: 92px;
+      }
+        .cart {
+          padding: 0px;
+
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          gap: 5px;
+          width: 70px;
+          height: 40px;
+          background-color: rgb(23, 31, 21);
+          color: white;
+
+          .txt{
+            font-size: 13px;
+          }
+        }
+    }
+  }
+}
+
+@media screen and (max-width: 960px){
+  .header {
+    .top_menu_1,
+    .top_menu_2 {
+      .menu {
+        .left,
+        .right {
+          .not_dropdown{
+            font-size: 11px;
+          }
+        }
+        .search {
+          .search-txt {
+            font-size: 13px;
+            color: gray;
+          }
+        }
+      }
+    }
+
+  }
+}
+
+@media screen and (max-width: 800px){
+  .header {
+    .top_menu_1,
+    .top_menu_2 {
+      display: none;
+    }
+    .top_menu_3{
+      display: block;
+      z-index: 99;
+    }
+  }
+}
