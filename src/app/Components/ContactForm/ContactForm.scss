@@ -5,10 +5,10 @@
   display: flex;
   align-items: center;
 
-  img {
+  .img_container {
+    position: relative;
     height: 100%;
     width: 300px;
-    object-fit: cover;
   }
 
   .form {
@@ -91,12 +91,7 @@
 }
 @media screen and (max-width: 630px) {
     .contact_form {
-      height: 30%;
-      img {
-        height: 100%;
-        width: 280px;
-        object-fit: contain;
-      }
+      height: 60vh;
     }
   }
   

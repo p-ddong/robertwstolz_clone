@@ -62,11 +62,15 @@ const Header = () => {
             <p className="not_dropdown">Felted Slippers & Mittens</p>
             <p className="not_dropdown">Leather Bags</p>
           </div>
-          <Image
-            className="logo"
-            src="https://www.robertwstolz.com/cdn/shop/files/Robert-Stolz-Loden_Logo_090622-RGB_410x.png?v=1656693283"
-            alt=""
-          />
+          <div className="img_container ">
+            <Image
+              className="logo"
+              src="https://www.robertwstolz.com/cdn/shop/files/Robert-Stolz-Loden_Logo_090622-RGB_410x.png?v=1656693283"
+              alt=""
+              fill
+              style={{ objectFit: "contain" }}
+            />
+          </div>
           <div className="right">
             <p>customer care</p>
             <p className="not_dropdown">FAQ</p>
@@ -86,11 +90,15 @@ const Header = () => {
             <p className="not_dropdown">Felted Slippers & Mittens</p>
             <p className="not_dropdown">Leather Bags</p>
           </div>
-          <Image
-            className="logo"
-            src="https://www.robertwstolz.com/cdn/shop/files/Robert-Stolz-Loden_Logo_090622-RGB_410x.png?v=1656693283"
-            alt=""
-          />
+          <div className="img_container ">
+            <Image
+              className="logo"
+              src="https://www.robertwstolz.com/cdn/shop/files/Robert-Stolz-Loden_Logo_090622-RGB_410x.png?v=1656693283"
+              alt=""
+              fill
+              style={{ objectFit: "contain" }}
+            />
+          </div>
           <div className="right">
             <p>customer care</p>
             <p className="not_dropdown">FAQ</p>
@@ -98,26 +106,29 @@ const Header = () => {
           <div className="search">
             <CiSearch />
           </div>
-          <div className='cart' >
+          <div className="cart">
             <PiHandbag />
             <p className="txt">0</p>
-
           </div>
         </div>
       </div>
 
       <div className="top_menu_3">
-      <div className="menu">
+        <div className="menu">
           <div className="left">
-            <CiMenuBurger className="burger"/>
+            <CiMenuBurger className="burger" />
             <p>MENU</p>
           </div>
-          <Image
-            className="logo"
-            src="https://www.robertwstolz.com/cdn/shop/files/Robert-Stolz-Loden_Logo_090622-RGB_410x.png?v=1656693283"
-            alt=""
-          />
-          <div className='cart' >
+          <div className="img_container ">
+            <Image
+              className="logo"
+              src="https://www.robertwstolz.com/cdn/shop/files/Robert-Stolz-Loden_Logo_090622-RGB_410x.png?v=1656693283"
+              alt=""
+              fill
+              style={{ objectFit: "contain" }}
+            />
+          </div>
+          <div className="cart">
             <PiHandbag />
             <p className="txt">0</p>
           </div>

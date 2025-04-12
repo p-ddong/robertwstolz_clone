@@ -62,8 +62,8 @@
           }
         }
       }
-
-      .logo {
+      .img_container{
+        position: relative;
         margin: auto auto;
         width: 165px;
         height: 53px;
@@ -110,7 +110,8 @@
       background-color: rgba(255, 255, 255, 0.9);
       padding: 0px 0px;
       padding-left: 20px;
-      .logo{
+      .img_container{
+        position: relative;
         margin-top: 10px;
         margin-bottom: 10px;
       }
@@ -160,8 +161,10 @@
           font-size: 30px;
         }
       }
-      .logo {
-        width: 92px;
+      .img_container {
+        position: relative;
+        width: 90px;
+        height: 50px;
       }
         .cart {
           padding: 0px;
