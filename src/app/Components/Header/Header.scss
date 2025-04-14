@@ -54,33 +54,36 @@
         gap: 18px;
         .drop_down {
           position: relative;
+
           .title {
             display: flex;
             justify-content: center;
             align-items: center;
             gap: 5px;
+            cursor: pointer;
           }
+
           .drop_down_items {
             display: none;
             padding: 10px;
             position: absolute;
-            top: 50px;
-            left: 0px;
+            top: 100%;
+            left: 0;
             width: 250px;
             background-color: rgba(255, 255, 255, 0.9);
-          }
-          &:hover {
-            .drop_down_items {
-              display: block;
+            z-index: 10;
+
+            li {
+              cursor: pointer;
+
+              &:hover {
+                font-weight: 600;
+              }
             }
           }
-        }
-        p {
-          cursor: pointer;
-          &:hover {
-            font-weight: 600;
 
-            border-bottom: 1px solid black;
+          &:hover .drop_down_items {
+            display: block;
           }
         }
       }
