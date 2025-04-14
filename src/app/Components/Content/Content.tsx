@@ -176,7 +176,7 @@ const Content = () => {
                   src={item.img}
                   alt=""
                   fill
-                  style={{ objectFit: "cover" }}
+                  style={{ objectFit: "scale-down" }}
                 />
                 <div className="item_info">
                   <p className="name">{item.name}</p>

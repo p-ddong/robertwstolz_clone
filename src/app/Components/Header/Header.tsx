@@ -8,6 +8,8 @@ import { IoMailOutline } from "react-icons/io5";
 import { CiUser, CiSearch } from "react-icons/ci";
 import { PiHandbag } from "react-icons/pi";
 import { CiMenuBurger } from "react-icons/ci";
+import { FaChevronDown } from "react-icons/fa6";
+
 import Image from "next/image";
 const Header = () => {
   const topMenu1Ref = useRef<HTMLDivElement | null>(null);
@@ -57,8 +59,25 @@ const Header = () => {
         </div>
         <div className="menu">
           <div className="left">
-            <p>Men</p>
-            <p>Women</p>
+            <div className="drop_down">
+              <div className="title">
+                Men <FaChevronDown />
+                <ul className="drop_down_items">
+                  <li>AUTHENTIC LODEN COATS</li>
+                  <li>{`MEN'S AUSTRIAN STYRIAN JACKETS`}</li>
+                  <li>SHIRTS & MORE</li>
+                </ul>
+              </div>
+            </div>
+            <div className="drop_down">
+              <div className="title">
+                Women <FaChevronDown />
+                <ul className="drop_down_items">
+                  <li>LODEN COATS</li>
+                  <li>{`WOMEN'S AUSTRIAN JACKETS`}</li>
+                </ul>
+              </div>
+            </div>
             <p className="not_dropdown">Felted Slippers & Mittens</p>
             <p className="not_dropdown">Leather Bags</p>
           </div>
@@ -72,7 +91,17 @@ const Header = () => {
             />
           </div>
           <div className="right">
-            <p>customer care</p>
+            <div className="drop_down">
+              <div className="title">
+                Customer Care <FaChevronDown />
+                <ul className="drop_down_items">
+                  <li>CONTACT</li>
+                  <li>SIZE & FIT GUIDE</li>
+                  <li>RETURNS & EXCHANGES</li>
+                  <li>CUSTOMER REVIEWS</li>
+                </ul>
+              </div>
+            </div>
             <p className="not_dropdown">FAQ</p>
           </div>
           <div className="search">
@@ -85,8 +114,25 @@ const Header = () => {
       <div className={`top_menu_2 ${isTopMenu1Visible ? "hidden" : ""}`}>
         <div className="menu">
           <div className="left">
-            <p>Men</p>
-            <p>Women</p>
+            <div className="drop_down">
+              <div className="title">
+                Men <FaChevronDown />
+                <ul className="drop_down_items">
+                  <li>AUTHENTIC LODEN COATS</li>
+                  <li>{`MEN'S AUSTRIAN STYRIAN JACKETS`}</li>
+                  <li>SHIRTS & MORE</li>
+                </ul>
+              </div>
+            </div>
+            <div className="drop_down">
+              <div className="title">
+                Women <FaChevronDown />
+                <ul className="drop_down_items">
+                  <li>LODEN COATS</li>
+                  <li>{`WOMEN'S AUSTRIAN JACKETS`}</li>
+                </ul>
+              </div>
+            </div>
             <p className="not_dropdown">Felted Slippers & Mittens</p>
             <p className="not_dropdown">Leather Bags</p>
           </div>
@@ -100,7 +146,17 @@ const Header = () => {
             />
           </div>
           <div className="right">
-            <p>customer care</p>
+            <div className="drop_down">
+              <div className="title">
+                Customer Care <FaChevronDown />
+                <ul className="drop_down_items">
+                  <li>CONTACT</li>
+                  <li>SIZE & FIT GUIDE</li>
+                  <li>RETURNS & EXCHANGES</li>
+                  <li>CUSTOMER REVIEWS</li>
+                </ul>
+              </div>
+            </div>
             <p className="not_dropdown">FAQ</p>
           </div>
           <div className="search">

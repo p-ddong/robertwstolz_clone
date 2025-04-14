@@ -1,4 +1,5 @@
 .header {
+  font-family: "Montserrat", sans-serif;
   .top_menu_1,
   .top_menu_2 {
     .social {
@@ -32,11 +33,10 @@
       }
     }
     .menu {
-
       padding: 10px 20px;
       display: flex;
       align-items: center;
-      font-size: 14px;
+      font-size: 13px;
       font-weight: 400;
 
       letter-spacing: 1px;
@@ -44,7 +44,7 @@
 
       .left,
       .right {
-        max-width: 500px;
+        max-width: 530px;
         width: auto;
         flex-wrap: wrap;
         line-height: 50px;
@@ -52,7 +52,29 @@
         display: flex;
         align-items: center;
         gap: 18px;
-
+        .drop_down {
+          position: relative;
+          .title {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 5px;
+          }
+          .drop_down_items {
+            display: none;
+            padding: 10px;
+            position: absolute;
+            top: 50px;
+            left: 0px;
+            width: 250px;
+            background-color: rgba(255, 255, 255, 0.9);
+          }
+          &:hover {
+            .drop_down_items {
+              display: block;
+            }
+          }
+        }
         p {
           cursor: pointer;
           &:hover {
@@ -62,7 +84,7 @@
           }
         }
       }
-      .img_container{
+      .img_container {
         position: relative;
         margin: auto auto;
         width: 165px;
@@ -85,7 +107,7 @@
         height: 42px;
         padding: 10px;
         border: 1px solid black;
-        
+
         &:hover {
           p {
             font-weight: 400;
@@ -110,12 +132,12 @@
       background-color: rgba(255, 255, 255, 0.9);
       padding: 0px 0px;
       padding-left: 20px;
-      .img_container{
+      .img_container {
         position: relative;
         margin-top: 10px;
         margin-bottom: 10px;
       }
-      .cart{
+      .cart {
         padding: 0px;
 
         display: flex;
@@ -129,7 +151,7 @@
         color: white;
       }
 
-      .search{
+      .search {
         padding: 0px;
         border: none;
         width: 30px;
@@ -152,12 +174,12 @@
       padding-top: 5px;
       padding-bottom: 5px;
       background-color: rgba(255, 255, 255, 0.9);
-      .left{
+      .left {
         gap: 5px;
         align-items: center;
         display: flex;
         font-size: 12px;
-        .burger{
+        .burger {
           font-size: 30px;
         }
       }
@@ -166,34 +188,34 @@
         width: 90px;
         height: 50px;
       }
-        .cart {
-          padding: 0px;
+      .cart {
+        padding: 0px;
 
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          gap: 5px;
-          width: 70px;
-          height: 40px;
-          background-color: rgb(23, 31, 21);
-          color: white;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 5px;
+        width: 70px;
+        height: 40px;
+        background-color: rgb(23, 31, 21);
+        color: white;
 
-          .txt{
-            font-size: 13px;
-          }
+        .txt {
+          font-size: 13px;
         }
+      }
     }
   }
 }
 
-@media screen and (max-width: 960px){
+@media screen and (max-width: 960px) {
   .header {
     .top_menu_1,
     .top_menu_2 {
       .menu {
         .left,
         .right {
-          .not_dropdown{
+          .not_dropdown {
             font-size: 11px;
           }
         }
@@ -205,17 +227,16 @@
         }
       }
     }
-
   }
 }
 
-@media screen and (max-width: 800px){
+@media screen and (max-width: 800px) {
   .header {
     .top_menu_1,
     .top_menu_2 {
       display: none;
     }
-    .top_menu_3{
+    .top_menu_3 {
       display: block;
       z-index: 99;
     }
