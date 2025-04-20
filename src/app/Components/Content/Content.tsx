@@ -5,54 +5,67 @@ import { FaChevronUp } from "react-icons/fa6";
 import { FaChevronDown } from "react-icons/fa6";
 import { MdOutlineSort } from "react-icons/md";
 import Image from "next/image";
-const Content = () => {
+import { ClothingItem } from "../Constant/types";
+
+type Props = {
+  cart:ClothingItem[];
+  setCart: React.Dispatch<React.SetStateAction<ClothingItem[]>>;
+}
+
+const Content = ({cart,setCart}:Props) => {
   const [color, setColor] = useState<boolean>(true);
   const [size, setSize] = useState<boolean>(true);
   const [fabric, setFabric] = useState<boolean>(true);
   const [hasMounted, setHasMounted] = useState<boolean>(false);
-
-  type ClothingItem = {
-    img: string;
-    name: string;
-    size: string[];
-    color: string;
-    fabric: string;
-    sale: boolean;
-    price: number;
-  };
+  const [colorFilter, setColorFilter] = useState<string[]>([]);
+  const [sizeFilter, setSizeFilter] = useState<string[]>([]);
+  const [fabricFilter, setFabricFilter] = useState<string[]>([]);
 
   const sizes = Array.from({ length: 20 }, (_, i) => `Size ${i + 1}`);
   const colors = ["Black", "Brown", "Camel", "Charcoal", "Green", "Navy Blue"];
   const fabrics = ["Loden", "Tweed", "Wool"];
 
-  function getRandomSizes(): string[] {
-    const shuffled = sizes.sort(() => 0.5 - Math.random());
-    const count = Math.floor(Math.random() * 5) + 1;
-    return shuffled.slice(0, count);
-  }
+  const [filteredClothes, setFilteredClothes] = useState<ClothingItem[]>(cart);
 
-  function getRandomItem<T>(arr: T[]): T {
-    return arr[Math.floor(Math.random() * arr.length)];
-  }
+  const addToCart = (id: number) => {
+    const updatedCart = cart.map((item) =>
+      item.id === id
+        ? { ...item, isInCart: !item.isInCart, quantity: item.isInCart ? 0 : 1 }
+        : item
+    );
+    setFilteredClothes(updatedCart)
+    setCart(updatedCart);
+  };
 
-  function getRandomPrice(): number {
-    return Math.floor(Math.random() * (700 - 200 + 1)) + 200;
-  }
-
-  const clothes: ClothingItem[] = Array.from({ length: 15 }, (_, i) => ({
-    img: "https://www.robertwstolz.com/cdn/shop/products/mens_austrian_wool_jacket-66_2000x.jpg?v=1665076938",
-    name: `Austrian Jacket ${i + 1}`,
-    size: getRandomSizes(),
-    color: getRandomItem(colors),
-    fabric: getRandomItem(fabrics),
-    sale: Math.random() > 0.5,
-    price: getRandomPrice(),
-  }));
   useEffect(() => {
     setHasMounted(true);
   }, []);
 
-  if (!hasMounted) return null; // or a spinner if you prefer
+  useEffect(() => {
+    setFilteredClothes(cart)
+  }, [cart]);
+
+  useEffect(() => {
+    let filtered = [...cart];
+
+    if (colorFilter.length > 0) {
+      filtered = filtered.filter((item) => colorFilter.includes(item.color));
+    }
+
+    if (sizeFilter.length > 0) {
+      filtered = filtered.filter((item) =>
+        item.size.some((sz) => sizeFilter.includes(sz))
+      );
+    }
+
+    if (fabricFilter.length > 0) {
+      filtered = filtered.filter((item) => fabricFilter.includes(item.fabric));
+    }
+
+    setFilteredClothes(filtered);
+  }, [colorFilter, sizeFilter, fabricFilter]);
+
+  if (!hasMounted) return null;
   return (
     <div className="content">
       <p className="content-txt">
@@ -69,10 +82,20 @@ const Content = () => {
             <div className={`filter_item ${color ? "" : "hidden"}`}>
               {colors.map((item) => (
                 <div className="item" key={item}>
-                  <input type="checkbox" />
+                  <input
+                    type="checkbox"
+                    value={item}
+                    onChange={(e) => {
+                      const checked = e.target.checked;
+                      setColorFilter((prev) =>
+                        checked
+                          ? [...prev, item]
+                          : prev.filter((c) => c !== item)
+                      );
+                    }}
+                  />
                   <div className="checkbox_name">
                     <p>{item}</p>
-                    <p>(1)</p>
                   </div>
                 </div>
               ))}
@@ -88,10 +111,21 @@ const Content = () => {
             <div className={`filter_item ${size ? "" : "hidden"}`}>
               {sizes.map((item) => (
                 <div className="item" key={item}>
-                  <input type="checkbox" />
+                  <input
+                    type="checkbox"
+                    value={item}
+                    onChange={(e) => {
+                      const checked = e.target.checked;
+                      setSizeFilter((prev) =>
+                        checked
+                          ? [...prev, item]
+                          : prev.filter((c) => c !== item)
+                      );
+                    }}
+                  />
                   <div className="checkbox_name">
                     <p>{item}</p>
-                    <p>(1)</p>
+                    {/* <p>(1)</p> */}
                   </div>
                 </div>
               ))}
@@ -108,10 +142,21 @@ const Content = () => {
             <div className={`filter_item ${fabric ? "" : "hidden"}`}>
               {fabrics.map((item) => (
                 <div className="item" key={item}>
-                  <input type="checkbox" />
+                  <input
+                    type="checkbox"
+                    value={item}
+                    onChange={(e) => {
+                      const checked = e.target.checked;
+                      setFabricFilter((prev) =>
+                        checked
+                          ? [...prev, item]
+                          : prev.filter((c) => c !== item)
+                      );
+                    }}
+                  />
                   <div className="checkbox_name">
                     <p>{item}</p>
-                    <p>(1)</p>
+                    {/* <p>(1)</p> */}
                   </div>
                 </div>
               ))}
@@ -126,7 +171,7 @@ const Content = () => {
 
           <div className="content_info">
             <div className="total_product">
-              <span className="cloths_num">{clothes.length}</span>{" "}
+              <span className="cloths_num">{filteredClothes.length}</span>{" "}
               <span>products</span>
             </div>
 
@@ -139,9 +184,8 @@ const Content = () => {
               <div className="limit_show">
                 <p>Show</p>
                 <select>
-                  <option value="0">24</option>
-                  <option value="0">24</option>
-                  <option value="1">48</option>
+                  <option value="24">24</option>
+                  <option value="48">48</option>
                 </select>
               </div>
 
@@ -162,17 +206,17 @@ const Content = () => {
             </div>
 
             <div className="total_product_2">
-              <span className="cloths_num">{clothes.length}</span>{" "}
+              <span className="cloths_num">{filteredClothes.length}</span>{" "}
               <span>products</span>
             </div>
           </div>
 
           <div className="shown_item">
-            {clothes.map((item) => (
-              <div className="cloth" key={item.name}>
+            {filteredClothes.map((item) => (
+              <div className="cloth" key={item.id} onClick={()=>addToCart(item.id)}>
                 <div className={`sale ${item.sale ? "hidden" : ""}`}>Sale</div>
                 <Image
-                className="img"
+                  className="img"
                   src={item.img}
                   alt=""
                   fill
@@ -192,6 +236,7 @@ const Content = () => {
                     )}
                   </p>
                 </div>
+                <div className="add">{item.isInCart?"-":"+"}</div>
               </div>
             ))}
           </div>

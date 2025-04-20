@@ -1,0 +1,84 @@
+.sales {
+  .sale_block.hidden {
+    display: none;
+  }
+  .sale_content.hidden {
+    display: none;
+  }
+
+  .sale_block {
+    position: fixed;
+    bottom: 0px;
+    left: 7%;
+
+    width: 150px;
+    height: 70px;
+    background-color: #fff;
+    border: 1px solid black;
+
+    border-radius: 3px 3px 0px 0px;
+    border-bottom: none;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 18px;
+    font-weight: 600;
+    
+    cursor: pointer;
+    z-index: 99;
+  }
+
+  .sale_content {
+    position: fixed;
+    top: 0px;
+    left: 0px;
+
+    font-size: 18px;
+    font-weight: 600;
+
+    width: 100vw;
+    height: 100vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    z-index: 100;
+    background: rgba($color: #000000, $alpha: 0.5);
+    .container {
+      width: 300px;
+      height: 200px;
+      background-color: #fff;
+      gap: 15px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+
+      position: relative;
+
+      .close_btn {
+        position: absolute;
+        right: 5px;
+        top: 5px;
+
+        cursor: pointer;
+
+        font-size: 30px;
+
+        transition: all 0.3s linear;
+        &:hover {
+          color: rgb(184, 16, 16);
+        }
+      }
+      button {
+        cursor: pointer;
+        background-color: #8d35ff;
+        padding: 8px;
+        border-radius: 4px;
+        border: 1px solid black;
+      }
+    }
+  }
+}

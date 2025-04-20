@@ -19,12 +19,60 @@
       .user_use {
         display: flex;
         gap: 30px;
+        height: 100%;
         .login,
         .cart {
+          height: 100%;
+          position: relative;
           display: flex;
+          align-items: center;
           gap: 5px;
           .txt {
             font-size: 12px;
+          }
+          &:hover{
+            .cart_items{
+              display: block;
+            }
+          }
+          .cart_items{
+            display: none;
+            position: absolute;
+            top: 100%;
+            right: 0px;
+            width: 350px;
+            background: #ffffff;
+            color: black;
+            padding: 20px;
+            z-index: 100;
+            .total{
+              display: flex;
+              align-items: center;
+              justify-content: space-between;
+            }
+            .list{
+              .cart_item{
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                border-bottom: 1px solid rgb(184, 184, 184);
+                padding-bottom: 10px;
+                div{
+                  display: flex;
+                  justify-content: center;
+                  align-items: center;
+                  gap: 8px;
+                  button{
+                    cursor: pointer;
+                    padding: 0px 10px;
+                    border-radius: 3px;
+                    font-weight: 700;
+                    color: white;
+                    background-color: gray;
+                  }
+                }
+              }
+            }
           }
         }
         .cart {
@@ -152,6 +200,51 @@
         height: 73px;
         background-color: black;
         color: white;
+        
+        &:hover{
+          .cart_items{
+            display: block;
+          }
+        }
+        .cart_items{
+          display: none;
+          position: absolute;
+          top: 100%;
+          right: 0px;
+          width: 350px;
+          background: #ffffff;
+          color: black;
+          padding: 20px;
+          z-index: 100;
+          .total{
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+          }
+          .list{
+            .cart_item{
+              display: flex;
+              justify-content: space-between;
+              align-items: center;
+              border-bottom: 1px solid rgb(184, 184, 184);
+              padding-bottom: 10px;
+              div{
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                gap: 8px;
+                button{
+                  cursor: pointer;
+                  padding: 0px 10px;
+                  border-radius: 3px;
+                  font-weight: 700;
+                  color: white;
+                  background-color: gray;
+                }
+              }
+            }
+          }
+        }
       }
 
       .search {

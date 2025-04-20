@@ -11,9 +11,47 @@ import { CiMenuBurger } from "react-icons/ci";
 import { FaChevronDown } from "react-icons/fa6";
 
 import Image from "next/image";
-const Header = () => {
+import { ClothingItem } from "../Constant/types";
+
+type Props = {
+  cart: ClothingItem[];
+  setCart: React.Dispatch<React.SetStateAction<ClothingItem[]>>;
+};
+
+const Header = ({ cart, setCart }: Props) => {
   const topMenu1Ref = useRef<HTMLDivElement | null>(null);
   const [isTopMenu1Visible, setIsTopMenu1Visible] = useState(true);
+  const [cartItems, setCartItems] = useState<ClothingItem[]>([]);
+  const manageItems = (type: string, id: number) => {
+    const index = cart.findIndex((item) => item.id === id);
+    if (index === -1) return console.warn("Item not found:", id);
+  
+    const item = cart[index];
+    const quantity = item.quantity ?? 0;
+  
+    const updatedItem = {
+      ...item,
+      quantity:
+        type === "add" ? quantity + 1 : quantity > 1 ? quantity - 1 : 0,
+      isInCart: type === "add" || quantity > 1,
+    };
+  
+    const newCart = [...cart];
+    newCart[index] = updatedItem;
+    setCart(newCart);
+  };
+
+  const totalCal = () => {
+    const total = cart.filter(item => item.isInCart).reduce((acc, item) => {
+      const price = item.sale ? item.price : item.price - 30;
+      return acc + price * (item.quantity ?? 1);
+    }, 0);
+    return total;
+  };
+
+  useEffect(() => {
+    setCartItems(cart.filter((item) => item.isInCart));
+  }, [cart]);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -53,7 +91,33 @@ const Header = () => {
             </div>
             <div className="cart">
               <PiHandbag />
-              <p className="txt">0</p>
+              <p className="txt">{cartItems.length}</p>
+
+              {cartItems.length >= 1 ? (
+                <div className="cart_items">
+                  <div className="list space-y-3">
+                    {cartItems.map((item) => (
+                      <div className="cart_item" key={item.id}>
+                        <p>{item.name}</p>
+                        <div>
+                          <button
+                            onClick={() => manageItems("subtract", item.id)}
+                          >
+                            -
+                          </button>
+                          <p>{item.quantity}</p>
+                          <button onClick={() => manageItems("add", item.id)}>
+                            +
+                          </button>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                  <div className="total"><p>Total</p> <p>{totalCal()}</p></div>
+                </div>
+              ) : (
+                ""
+              )}
             </div>
           </div>
         </div>
@@ -164,7 +228,32 @@ const Header = () => {
           </div>
           <div className="cart">
             <PiHandbag />
-            <p className="txt">0</p>
+            <p className="txt">{cartItems.length}</p>
+            {cartItems.length >= 1 ? (
+                <div className="cart_items">
+                  <div className="list space-y-3">
+                    {cartItems.map((item) => (
+                      <div className="cart_item" key={item.id}>
+                        <p>{item.name}</p>
+                        <div>
+                          <button
+                            onClick={() => manageItems("subtract", item.id)}
+                          >
+                            -
+                          </button>
+                          <p>{item.quantity}</p>
+                          <button onClick={() => manageItems("add", item.id)}>
+                            +
+                          </button>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                  <div className="total"><p>Total</p> <p>{totalCal()}</p></div>
+                </div>
+              ) : (
+                ""
+              )}
           </div>
         </div>
       </div>
@@ -186,7 +275,7 @@ const Header = () => {
           </div>
           <div className="cart">
             <PiHandbag />
-            <p className="txt">0</p>
+            <p className="txt">{cartItems.length}</p>
           </div>
         </div>
       </div>
