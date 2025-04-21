@@ -30,45 +30,103 @@
           .txt {
             font-size: 12px;
           }
-          &:hover{
-            .cart_items{
+          &:hover {
+            .cart_items {
               display: block;
             }
           }
-          .cart_items{
+          .cart_items {
+            h1 {
+              margin-left: 20px;
+              font-size: large;
+              font-weight: bold;
+            }
+            border: 1px solid gainsboro;
+            border-radius: 5px;
             display: none;
             position: absolute;
             top: 100%;
             right: 0px;
-            width: 350px;
-            background: #ffffff;
+            width: 500px;
+            background: rgba(255, 255, 255, 1);
             color: black;
-            padding: 20px;
+            padding: 20px 0px;
             z-index: 100;
-            .total{
+            font-size: 15px;
+            .total {
               display: flex;
               align-items: center;
               justify-content: space-between;
+
+              margin: 10px 20px;
+
+              font-size: 18px;
+              font-weight: 600;
             }
-            .list{
-              .cart_item{
-                display: flex;
-                justify-content: space-between;
-                align-items: center;
-                border-bottom: 1px solid rgb(184, 184, 184);
-                padding-bottom: 10px;
-                div{
-                  display: flex;
-                  justify-content: center;
-                  align-items: center;
-                  gap: 8px;
-                  button{
+            .list {
+              width: 100%;
+              border-collapse: collapse;
+              margin-top: 20px;
+              tr {
+                border-bottom: 1px solid #e0e0e0;
+              }
+              th,
+              td {
+                padding: 12px 16px;
+                text-align: center;
+              }
+              th {
+                background-color: #f5f5f5;
+                font-weight: 600;
+                color: #333;
+                &.name {
+                  text-align: left;
+                }
+              }
+
+              tr {
+                transition: background-color 0.2s ease-in-out;
+
+                &:hover {
+                  background-color: #fafafa;
+                }
+
+                td {
+                  &.quantity_manage {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    gap: 10px;
+
+                    button {
+                      padding: 4px 10px;
+                      border: 1px solid #ccc;
+                      background-color: #f1f1f1;
+                      border-radius: 4px;
+                      cursor: pointer;
+                      transition: background-color 0.2s;
+
+                      &:hover {
+                        background-color: #e0e0e0;
+                      }
+                    }
+
+                    p {
+                      margin: 0;
+                      font-weight: 500;
+                    }
+                  }
+
+                  &.clear button {
+                    background: none;
+                    border: none;
                     cursor: pointer;
-                    padding: 0px 10px;
-                    border-radius: 3px;
-                    font-weight: 700;
-                    color: white;
-                    background-color: gray;
+                    padding: 4px;
+                    transition: transform 0.2s;
+                    font-size: 20px;
+                    &:hover {
+                      transform: scale(1.1);
+                    }
                   }
                 }
               }
@@ -200,13 +258,13 @@
         height: 73px;
         background-color: black;
         color: white;
-        
-        &:hover{
-          .cart_items{
+
+        &:hover {
+          .cart_items {
             display: block;
           }
         }
-        .cart_items{
+        .cart_items {
           display: none;
           position: absolute;
           top: 100%;
@@ -216,24 +274,25 @@
           color: black;
           padding: 20px;
           z-index: 100;
-          .total{
+          .total {
+            margin-top: 10px;
             display: flex;
             align-items: center;
             justify-content: space-between;
           }
-          .list{
-            .cart_item{
+          .list {
+            .cart_item {
               display: flex;
               justify-content: space-between;
               align-items: center;
               border-bottom: 1px solid rgb(184, 184, 184);
               padding-bottom: 10px;
-              div{
+              div {
                 display: flex;
                 justify-content: center;
                 align-items: center;
                 gap: 8px;
-                button{
+                button {
                   cursor: pointer;
                   padding: 0px 10px;
                   border-radius: 3px;
