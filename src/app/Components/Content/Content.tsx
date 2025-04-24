@@ -6,13 +6,15 @@ import { FaChevronDown } from "react-icons/fa6";
 import { MdOutlineSort } from "react-icons/md";
 import Image from "next/image";
 import { ClothingItem } from "../Constant/types";
+import { IoCartOutline } from "react-icons/io5";
+import { IoCart } from "react-icons/io5";
 
 type Props = {
-  cart:ClothingItem[];
+  cart: ClothingItem[];
   setCart: React.Dispatch<React.SetStateAction<ClothingItem[]>>;
-}
+};
 
-const Content = ({cart,setCart}:Props) => {
+const Content = ({ cart, setCart }: Props) => {
   const [color, setColor] = useState<boolean>(true);
   const [size, setSize] = useState<boolean>(true);
   const [fabric, setFabric] = useState<boolean>(true);
@@ -20,6 +22,8 @@ const Content = ({cart,setCart}:Props) => {
   const [colorFilter, setColorFilter] = useState<string[]>([]);
   const [sizeFilter, setSizeFilter] = useState<string[]>([]);
   const [fabricFilter, setFabricFilter] = useState<string[]>([]);
+  const [searchQuery, setSearchQuery] = useState<string>("");
+  const [numDisplay, setNumDisplay] = useState<number>(12);
 
   const sizes = Array.from({ length: 20 }, (_, i) => `Size ${i + 1}`);
   const colors = ["Black", "Brown", "Camel", "Charcoal", "Green", "Navy Blue"];
@@ -33,7 +37,7 @@ const Content = ({cart,setCart}:Props) => {
         ? { ...item, isInCart: !item.isInCart, quantity: item.isInCart ? 0 : 1 }
         : item
     );
-    setFilteredClothes(updatedCart)
+    setFilteredClothes(updatedCart);
     setCart(updatedCart);
   };
 
@@ -42,7 +46,7 @@ const Content = ({cart,setCart}:Props) => {
   }, []);
 
   useEffect(() => {
-    setFilteredClothes(cart)
+    setFilteredClothes(cart);
   }, [cart]);
 
   useEffect(() => {
@@ -62,10 +66,18 @@ const Content = ({cart,setCart}:Props) => {
       filtered = filtered.filter((item) => fabricFilter.includes(item.fabric));
     }
 
+    if (searchQuery.trim()) {
+      const lowerQuery = searchQuery.toLowerCase();
+      filtered = filtered.filter((item) =>
+        item.name.toLowerCase().includes(lowerQuery)
+      );
+    }
+
     setFilteredClothes(filtered);
-  }, [colorFilter, sizeFilter, fabricFilter]);
+  }, [colorFilter, sizeFilter, fabricFilter, searchQuery]);
 
   if (!hasMounted) return null;
+
   return (
     <div className="content">
       <p className="content-txt">
@@ -166,12 +178,17 @@ const Content = ({cart,setCart}:Props) => {
         <div className="main_content">
           <div className="search">
             <CiSearch className="search_icon" />
-            <input type="text" placeholder="Search products" />
+            <input
+              type="text"
+              placeholder="Search products"
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+            />
           </div>
 
           <div className="content_info">
             <div className="total_product">
-              <span className="cloths_num">{filteredClothes.length}</span>{" "}
+              <span className="cloths_num">{filteredClothes.slice(0, numDisplay).length}</span>{" "}
               <span>products</span>
             </div>
 
@@ -183,9 +200,9 @@ const Content = ({cart,setCart}:Props) => {
 
               <div className="limit_show">
                 <p>Show</p>
-                <select>
-                  <option value="24">24</option>
-                  <option value="48">48</option>
+                <select onChange={(e) => setNumDisplay(Number(e.target.value))}>
+                  <option value={12}>12</option>
+                  <option value={24}>24</option>
                 </select>
               </div>
 
@@ -212,8 +229,8 @@ const Content = ({cart,setCart}:Props) => {
           </div>
 
           <div className="shown_item">
-            {filteredClothes.map((item) => (
-              <div className="cloth" key={item.id} onClick={()=>addToCart(item.id)}>
+            {filteredClothes.slice(0, numDisplay).map((item) => (
+              <div className="cloth" key={item.id}>
                 <div className={`sale ${item.sale ? "hidden" : ""}`}>Sale</div>
                 <Image
                   className="img"
@@ -236,7 +253,13 @@ const Content = ({cart,setCart}:Props) => {
                     )}
                   </p>
                 </div>
-                <div className="add">{item.isInCart?"-":"+"}</div>
+                <div className="add" onClick={() => addToCart(item.id)}>
+                  {item.isInCart ? (
+                    <IoCart className="text-" />
+                  ) : (
+                    <IoCartOutline />
+                  )}
+                </div>
               </div>
             ))}
           </div>

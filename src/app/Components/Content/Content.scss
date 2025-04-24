@@ -266,22 +266,15 @@
           }
           .add{
             position: absolute;
-            left: 0px;
-            right: 0px;
-            top: 0px;
-            bottom: 0px;
+            right: 10px;
+            top: 10px;
 
-            font-size: 100px;
-            font-weight: bold;
             z-index: 30;
             color: white;
-
+            font-size: 30px;
             display: flex;
             justify-content: center;
             align-items: center;
-
-            display: none;
-
             transition: all 0.3s linear;
 
             cursor: pointer;
